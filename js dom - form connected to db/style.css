@@ -60,18 +60,68 @@ input[type="email"], input[type="text"], input[type="password"]
 .txtArea
 {
   max-width: 1fr;
+
 }
 .grid1-2
 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
+        grid-column: 1 / span 2;
+
     grid-gap: 10px;
     max-width: 80%;
     justify-self: center;
-    align-self: center;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
+
 padding: 10px;
 margin: 10px;
+box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+border-radius: 3px;
+}
+.buttonText
+{
+    grid-column: 1 / span 2;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.key
+{
+
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px;
+    text-align: center;
+    height: 30px;
+  
+}
+.keys
+{
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 10px;
+    background-color: #000000; 
+    max-width: 80%;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    justify-content: center;
+    justify-self: center;
+
+}
+.clickedKey
+{
+    background-color: rgb(0, 233, 19);
+    color: white;
+    box-shadow: 1px 1px 10px rgb(251, 255, 0);
 }

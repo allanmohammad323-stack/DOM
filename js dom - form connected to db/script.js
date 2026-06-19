@@ -54,42 +54,90 @@ convertToRedBtn.onclick=function()
 
 convertToRedBtn.classList.add('convertToRedBtn');
 document.querySelector('title').textContent='DOM---';
-/*
-const txtarea=document.createElement('input');
-txtarea.classList.add('txtArea');
-txtarea.setAttribute('name','message');
-txtarea.setAttribute('placeholder','Enter your text here...');
-form.insertBefore(txtarea, form.querySelector('button[type="submit"]'));
-*/
+
 const containerDiv = document.querySelector('.container');
 const divRemoveChild=document.createElement('div');
+
+divRemoveChild.classList.add('grid1-2');
 
 containerDiv.appendChild(divRemoveChild);
 
 const removeChildBtn = document.createElement('button');
 removeChildBtn.textContent = 'Remove Child';
-removeChildBtn.classList.add('grid1-2');
+removeChildBtn.classList.add('grid1-2','submit');
 form.insertBefore(removeChildBtn, form.querySelector('button[type="submit"]'));
 
+
 const inputElementName =document.createElement('input');
-inputElementName.setAttribute('placeholder','Enter element name...');
+inputElementName.setAttribute('placeholder','Enter element id...');
 inputElementName.classList.add('grid1-2');
 divRemoveChild.append(removeChildBtn);
 divRemoveChild.insertBefore(inputElementName, removeChildBtn);
 
+removeChildBtn.style.maxWidth = inputElementName.offsetWidth + 'px'; 
+
 const textarea = document.createElement('textarea');
 textarea.setAttribute('placeholder','my id is testRemoveItem');
 textarea.setAttribute('id','testRemoveItem');
+textarea.classList.add('grid1-2');
 
-containerDiv.appendChild(textarea);
+
+divRemoveChild.appendChild(textarea);
 
 removeChildBtn.onclick=function()
 {
     const elementName = inputElementName.value;
     if (elementName&& document.getElementById(elementName)) {
         const elementToRemove = document.getElementById(elementName);    
-    document.querySelector('.container').removeChild(elementToRemove);
+    document.querySelector('.grid1-2').removeChild(elementToRemove);
+        console.log(inputElementName.value+" removed");
+
     } else {
         alert('Please enter a valid element name.');
     }
 }
+console.log(containerDiv.children[0].textContent);
+
+
+const cloneContainerBtn = document.createElement('button');
+cloneContainerBtn.textContent = 'Clone container div';
+cloneContainerBtn.classList.add('grid1-2','submit','buttonText');
+
+cloneContainerBtn.style.maxWidth = removeChildBtn.offsetWidth + 'px';
+
+containerDiv.appendChild(cloneContainerBtn);
+
+const body = document.querySelector('body');
+cloneContainerBtn.onclick=function()
+{
+    const clonedContainer = containerDiv.cloneNode(true);       
+    body.appendChild(clonedContainer);
+    console.log('Container div cloned');
+}
+
+
+const allDivs = document.querySelectorAll('div');
+allDivs.forEach(div => {
+    div.insertBefore(document.createElement('button'), div.firstChild).textContent = 'X';
+    div.firstChild.classList.add('removeBtn');
+    div.firstChild.onclick = function() {
+        div.remove();
+        console.log('Div removed');
+    }
+});
+
+const keys = document.querySelector('.keys');
+keys.removeChild(keys.querySelector('button'));
+
+
+document.addEventListener('keydown', function(event) {
+    
+   
+        document.getElementById(event.key.toUpperCase()).classList.add('clickedKey');
+    
+});
+document.addEventListener('keyup', function(event) {
+    
+        document.getElementById(event.key.toUpperCase()).classList.remove('clickedKey');
+    
+});
